@@ -1,5 +1,6 @@
 FROM trafex/php-nginx:latest
 USER root
+COPY default.conf /etc/nginx/conf.d
 RUN apk add --no-cache php81-zip
 
 USER nobody
@@ -9,3 +10,5 @@ RUN unzip grav-admin-v1.7.40.zip
 RUN rm grav-admin-v1.7.40.zip
 RUN mv grav-admin/* .
 RUN rm -rf grav-admin
+
+EXPOSE 10000
